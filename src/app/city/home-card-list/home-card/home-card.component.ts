@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import 'rxjs/add/operator/combineLatest';
+import { HomeCard } from '../../../core/homecard/homecard.model';
 
 
 @Component({
@@ -11,6 +11,6 @@ import 'rxjs/add/operator/combineLatest';
 })
 export class HomeCardComponent {
 
-  @Input() homeCard: string;
+  @Input() homeCard: HomeCard;
 
 }

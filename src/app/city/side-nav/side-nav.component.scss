@@ -1,14 +1,7 @@
 @import "../../../styles/config/variables";
 
-$side-nav-height: 60px !default;
+$side-nav__filter-box-spacer: $spacer-y * 3;
 
-:host {
-  display: block;
-  background-color: $white;
-}
-
-#logo {
-  max-width: $app-max-width;
-  margin: 0 auto;
-  background-color: red;
+.side-nav__filter-box {
+  margin-top: $spacer-y * 4;
 }

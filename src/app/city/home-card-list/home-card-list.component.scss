@@ -2,11 +2,7 @@
 
 $home-card-list-spacer-y: $spacer-y !default;
 
-:host {
-  display: block;
-  background-color: $white;
-}
-
 sar-home-card {
+  display: block;
   margin-bottom: $home-card-list-spacer-y;
 }

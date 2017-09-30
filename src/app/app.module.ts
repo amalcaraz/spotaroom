@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HeaderModule } from './header/header.module';
@@ -16,7 +15,6 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule,
     BrowserModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
     HeaderModule
   ],
   providers: [],

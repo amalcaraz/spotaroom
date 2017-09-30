@@ -1,0 +1,7 @@
+<button class="btn btn-primary" (click)="generateFileUrl();">{{name}}</button>
+
+<a #hiddenAnchor
+  [style.visibility]="'hidden'"
+  [target]="'_blank'"
+  [href]="url"
+  [download]="fileName"></a>

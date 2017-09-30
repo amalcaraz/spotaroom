@@ -1,1 +1,13 @@
-<div></div>
+<div class="home-card">
+  <div class="row">
+    <div class="col-3">
+      <img class="home-card__photo" [src]="homeCard.mainPhotoUrl">
+    </div>
+    <div class="col-9">
+      <span class="home-card__title">{{homeCard.title}}</span>
+      <span class="home-card__price">{{homeCard.pricePerMonth}}</span>
+      <a class="btn btn-secondary home-card__detail" href="#">More details</a>
+      <a class="btn btn-primary home-card__book" href="#">Book now!</a>
+    </div>
+  </div>
+</div>

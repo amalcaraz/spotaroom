@@ -1,0 +1,8 @@
+<ng-container *ngIf="loading; then thenBlock; else elseBlock"></ng-container>
+<ng-template #thenBlock>
+  Loading...
+</ng-template>
+<ng-template #elseBlock>
+  <ng-content></ng-content>
+</ng-template>
+

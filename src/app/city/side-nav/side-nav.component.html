@@ -1,1 +1,19 @@
-sidenav
+<h2>Filters:</h2>
+<div class="side-nav__filter-box">
+  <h4>Property type</h4>
+  <sar-dropdown [id]="'side-nav-filters'"
+                [selected]="selectedFilter$ | async"
+                (selectedChange)="onFilterChange($event)"
+                [options]="filters$ | async"></sar-dropdown>
+</div>
+<div class="side-nav__filter-box">
+  <h4>Sort by price</h4>
+  <sar-dropdown [id]="'side-nav-order'"
+                [selected]="selectedOrder$ | async"
+                (selectedChange)="onOrderChange($event)"
+                [options]="orders$ | async"></sar-dropdown>
+</div>
+<div class="side-nav__filter-box">
+  <sar-download-json [data]="this.currentHomeCard$ | async"></sar-download-json>
+</div>
+

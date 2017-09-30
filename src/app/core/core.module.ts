@@ -10,15 +10,19 @@ import { HomeCardService } from './homecard/homecard.service';
 import { CustomRouterStateSerializer, reducers } from './core.reducer';
 import { environment } from '../../environments/environment';
 import { SettingsService } from './settings/settings.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeCardModule } from './homecard/homecard.module';
 
 
 @NgModule({
   imports: [
     HttpModule,
+    NgbModule.forRoot(),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument({maxAge: 10}) : [],
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule,
+    HomeCardModule
   ],
   exports: [],
   providers: [

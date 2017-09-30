@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 
 export interface RouterState {
   url: string;
-  params: Params,
+  params: Params;
   queryParams: Params;
 }
 
@@ -30,14 +30,14 @@ export class CustomRouterStateSerializer implements RouterStateSerializer<Router
 
 }
 
-export interface State {
+export interface RootState {
   routerReducer: fromRouter.RouterReducerState<RouterState>;
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const reducers: ActionReducerMap<RootState> = {
   routerReducer: fromRouter.routerReducer,
 };
 
-export const metaReducers: MetaReducer<State>[] = !environment.production
+export const metaReducers: MetaReducer<RootState>[] = !environment.production
   ? [storeFreeze]
   : [];

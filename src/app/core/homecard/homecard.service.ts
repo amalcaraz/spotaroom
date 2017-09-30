@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, RequestOptions, URLSearchParams, Response } from '@angular/http';
 import * as format from 'string-format';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -8,7 +8,7 @@ import 'rxjs/add/observable/of';
 
 import { SettingsService } from '../settings/settings.service';
 import { CityId } from '../../app.model';
-import { HomeCardResponse } from './homecard.model';
+import { HomeCard, HomeCardResponse } from './homecard.model';
 import { MarkerService } from '../marker/marker.service';
 import { Marker, MarkerResponse } from '../marker/marker.model';
 
@@ -36,7 +36,7 @@ export class HomeCardService {
 
   }
 
-  get(city: CityId, filters: HomeCardRequestFilters = DEFAULT_FILTERS): Observable<HomeCardResponse> {
+  get(city: CityId, filters: HomeCardRequestFilters = DEFAULT_FILTERS): Observable<HomeCard[]> {
 
     return this._markerSerivce
       .get(city)
@@ -51,11 +51,11 @@ export class HomeCardService {
 
           return this._http
             .get(url, options)
-            .map((response) => response.json() as HomeCardResponse);
+            .map((response: Response) => (response.json() as HomeCardResponse).data.homecards as HomeCard[]);
 
         } else {
 
-          return Observable.of({} as HomeCardResponse);
+          return Observable.of([] as HomeCard[]);
 
         }
 
