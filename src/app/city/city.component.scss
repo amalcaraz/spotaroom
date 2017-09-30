@@ -1,0 +1,7 @@
+@import "../../styles/config/variables";
+
+.city__content {
+  height: 100%;
+  overflow: auto;
+  padding-top: $spacer-y;
+}

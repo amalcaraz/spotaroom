@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, URLSearchParams, Response } from '@angular/http';
+import { Http, Response, URLSearchParams } from '@angular/http';
 import * as format from 'string-format';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -8,17 +8,12 @@ import 'rxjs/add/observable/of';
 
 import { SettingsService } from '../settings/settings.service';
 import { CityId } from '../../app.model';
-import { HomeCard, HomeCardResponse } from './homecard.model';
+import { HomeCard, HomeCardRequestOptions, HomeCardResponse } from './homecard.model';
 import { MarkerService } from '../marker/marker.service';
 import { Marker, MarkerResponse } from '../marker/marker.model';
 
 
-export interface HomeCardRequestFilters {
-  count: number;
-  offset: number;
-}
-
-export const DEFAULT_FILTERS: HomeCardRequestFilters = {
+export const DEFAULT_HOME_CARD_OPTIONS: HomeCardRequestOptions = {
   count: 30,
   offset: 0
 };
@@ -30,27 +25,27 @@ export class HomeCardService {
 
   constructor(private _settingsService: SettingsService,
               private _http: Http,
-              private _markerSerivce: MarkerService) {
+              private _markerService: MarkerService) {
 
     this._settings = this._settingsService.get('homecard');
 
   }
 
-  get(city: CityId, filters: HomeCardRequestFilters = DEFAULT_FILTERS): Observable<HomeCard[]> {
+  get(city: CityId, options?: HomeCardRequestOptions): Observable<HomeCard[]> {
 
-    return this._markerSerivce
-      .get(city)
+    options = {...DEFAULT_HOME_CARD_OPTIONS, ...options};
+
+    return this._markerService
+      .get(city, options)
       .switchMap((markerResponse: MarkerResponse) => {
 
         if (markerResponse.ok && markerResponse.data.length > 0) {
 
           const url: string = format(this._settings['host'] + this._settings['resource']);
-
-          const options: RequestOptions = new RequestOptions();
-          options.params = this.obtainParams(markerResponse.data, filters);
+          const params: URLSearchParams = this.obtainHomeCardParams(markerResponse.data, options);
 
           return this._http
-            .get(url, options)
+            .get(url, {params})
             .map((response: Response) => (response.json() as HomeCardResponse).data.homecards as HomeCard[]);
 
         } else {
@@ -63,20 +58,20 @@ export class HomeCardService {
 
   }
 
-  private obtainParams(markers: Marker[], filters: HomeCardRequestFilters): URLSearchParams {
+  private obtainHomeCardParams(markers: Marker[], options: HomeCardRequestOptions): URLSearchParams {
 
     // TODO: This should work... but angular is generating the array params names without '[]' postfix
     /*return markers
-      .slice(filters.offset, filters.count)
-      .reduce((params: URLSearchParams, marker: Marker) => {
+     .slice(filters.offset, filters.count)
+     .reduce((params: URLSearchParams, marker: Marker) => {
 
-        params.append('ids', marker.id.toString());
-        return params;
+     params.append('ids', marker.id.toString());
+     return params;
 
-      }, new URLSearchParams());*/
+     }, new URLSearchParams());*/
 
     const idParams: string = markers
-      .slice(filters.offset, filters.count)
+      .slice(options.offset, options.count)
       .map((marker: Marker) => 'ids[]=' + marker.id)
       .join('&');
 

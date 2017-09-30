@@ -4,10 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/take';
 
-import { getFilters, getOrders, getSelectedFilter, getSelectedOrder } from '../city.selectors';
+import { getFilters, getHomeCardsFiltered, getOrders, getSelectedFilter, getSelectedOrder } from '../city.selectors';
 import { State } from '../city.reducer';
 import { SetFilter, SetOrder } from '../city.actions';
-import { getAll } from '../../core/homecard/homecard.selectors';
 import { HomeCard } from '../../core/homecard/homecard.model';
 
 
@@ -31,7 +30,7 @@ export class SideNavComponent {
     this.orders$ = this._store.select(getOrders);
     this.selectedFilter$ = this._store.select(getSelectedFilter);
     this.selectedOrder$ = this._store.select(getSelectedOrder);
-    this.currentHomeCard$ = this._store.select(getAll);
+    this.currentHomeCard$ = this._store.select(getHomeCardsFiltered);
 
   }
 

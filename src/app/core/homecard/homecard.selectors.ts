@@ -22,11 +22,4 @@ export const getAll = createSelector(getEntities, getIds, (entities, ids) => {
   return ids.map(id => entities[id]);
 });
 
-export const getRequestFilters = createSelector(getEntities, (entities) => {
-
-  return [];
-
-});
-
-
 

@@ -2,6 +2,13 @@
 
 $side-nav__filter-box-spacer: $spacer-y * 3;
 
-.side-nav__filter-box {
-  margin-top: $spacer-y * 4;
+.side-nav {
+
+  background-color: red;
+
+  &__filter-box {
+    margin-top: $spacer-y * 4;
+  }
+
 }
+

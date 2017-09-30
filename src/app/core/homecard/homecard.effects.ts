@@ -29,7 +29,7 @@ export class HomeCardEffects {
       const nextLoad$ = this.actions$.ofType(LOAD).skip(1);
 
       return this._homeCardService
-        .get(payload.city, payload.filters)
+        .get(payload.city, payload.options)
         .takeUntil(nextLoad$)
         .map((homeCards: HomeCard[]) => new LoadHomeCardSuccess(homeCards))
         .catch((err) => Observable.of(new LoadHomeCardFailed(err)));

@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { HomeCard } from './homecard.model';
-import { HomeCardRequestFilters } from './homecard.service';
+import { HomeCard, HomeCardRequestOptions } from './homecard.model';
 
 
 export const LOAD = '[HomeCard] Load';
@@ -10,7 +9,7 @@ export const LOAD_FAILED = '[HomeCard] Load Failed';
 
 export interface LoadHomeCardPayload {
   city: string;
-  filters?: HomeCardRequestFilters;
+  options?: HomeCardRequestOptions;
 }
 
 export class LoadHomeCard implements Action {

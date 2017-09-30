@@ -1,3 +1,6 @@
+import { MarkerRequestOptions } from '../marker/marker.model';
+
+
 export interface HomeCard {
   id: number;
   features: {
@@ -42,4 +45,9 @@ export interface HomeCardResponse {
   data: {
     homecards: HomeCard[];
   };
+}
+
+export interface HomeCardRequestOptions extends MarkerRequestOptions {
+  count?: number;
+  offset?: number;
 }

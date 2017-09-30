@@ -1,4 +1,5 @@
 import { Actions, SET_FILTER, SET_ORDER } from './city.actions';
+import { DEFAULT_MARKER_FILTER as MARKER_DEFAULT_FILTER } from '../core/marker/marker.model';
 
 
 export interface State {
@@ -8,19 +9,23 @@ export interface State {
   orders: string[];
 }
 
+export const DEFAULT_FILTER = MARKER_DEFAULT_FILTER;
+export const ASCENDING_ORDER = 'ascending';
+export const DESCENDING_ORDER = 'descending';
+
 export const initialState: State = {
-  selectedFilter: 'all',
+  selectedFilter: DEFAULT_FILTER,
   selectedOrder: 'ascending',
   filters: [
-    'all',
+    DEFAULT_FILTER,
     'apartments',
     'rooms',
     'studios',
     'residences'
   ],
   orders: [
-    'ascending',
-    'descending'
+    ASCENDING_ORDER,
+    DESCENDING_ORDER
   ]
 };
 
