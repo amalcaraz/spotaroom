@@ -5,6 +5,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+In order to fix CORS problems with the API two options are up to you:
+- Disable browser [strict origin policy](https://www.thepolyglotdeveloper.com/2014/08/bypass-cors-errors-testing-apis-locally/). (in chrome: --disable-web-security)
+- Use [this extension](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) in chrome
+- Try to modify your hosts configuration file (in linux `/etc/hosts`) an add a accepted by api cors-origin host, for example:
+   ```bash
+       127.0.0.1    app.spotahome.com 
+   ```
+- You can use [xip.io](http://xip.io/) too: `app.spotahome.com.127.0.0.1.xip.io`
 
 ## Code scaffolding
 

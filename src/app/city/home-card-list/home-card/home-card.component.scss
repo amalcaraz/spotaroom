@@ -1,0 +1,14 @@
+@import "../../../../styles/config/variables";
+
+$home-card-height: 60px !default;
+
+:host {
+  display: block;
+  background-color: $white;
+}
+
+#logo {
+  max-width: $app-max-width;
+  margin: 0 auto;
+  background-color: red;
+}

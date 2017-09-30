@@ -1,1 +1,7 @@
+@import "../styles/config/variables";
 
+#app-wrapper {
+  max-width: $app-max-width;
+  margin: 0 auto;
+  background-color: $white;
+}

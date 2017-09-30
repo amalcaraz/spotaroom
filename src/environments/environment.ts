@@ -4,5 +4,15 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  settings: {
+    marker: {
+      host: 'https://staging.spotahome.com',
+      resource: '/api/public/listings/search/markers/{0}'
+    },
+    homecard: {
+      host: 'https://staging.spotahome.com',
+      resource: '/api/public/listings/search/homecards_ids'
+    }
+  }
 };

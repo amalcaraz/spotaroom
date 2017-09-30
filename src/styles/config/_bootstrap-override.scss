@@ -1,19 +1,29 @@
 $icon-font-path: '../../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 $font-family-base: $font-family-2;
 
-$body-bg:    $gray-400;
+$spacer: $spacer-y;
+
+$body-bg:    $gray-500;
 $body-color: $black;
 
-
-/*
-$theme-colors: (
-  primary: red,
-  secondary: red,
-  success: red,
-  info: red,
-  warning: red,
-  danger: red,
-  light: red,
-  dark: red
+$colors: (
+  orange: $orange,
+  yellow: $yellow,
+  dark-green: $dark-green,
+  green: $green,
+  white: $white,
+  gray: $gray-500,
+  gray-light: $gray-400,
+  gray-dark: $gray-800
 );
-*/
+
+$theme-colors: (
+  primary: $green,
+  secondary: $orange,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800
+);
