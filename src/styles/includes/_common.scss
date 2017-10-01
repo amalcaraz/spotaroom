@@ -5,3 +5,12 @@ h1, h2, h3, h4, h5 {
 html, body {
   height: 100%;
 }
+
+a, a:hover {
+  color: $orange;
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+}

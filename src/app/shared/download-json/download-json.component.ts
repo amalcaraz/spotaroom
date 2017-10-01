@@ -10,6 +10,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class DownloadJsonComponent {
 
   @Input() name = 'Download JSON';
+  @Input() classes = 'btn-primary';
   @Input() fileName = 'data.json';
   @Input() data: {};
 

@@ -1,8 +1,18 @@
 <ng-container *ngIf="loading; then thenBlock; else elseBlock"></ng-container>
 <ng-template #thenBlock>
-  Loading...
+  <div class="loader">
+    <div class="circular-loader">
+      <div class="circularG circularG_1"></div>
+      <div class="circularG circularG_2"></div>
+      <div class="circularG circularG_3"></div>
+      <div class="circularG circularG_4"></div>
+      <div class="circularG circularG_5"></div>
+      <div class="circularG circularG_6"></div>
+      <div class="circularG circularG_7"></div>
+      <div class="circularG circularG_8"></div>
+    </div>
+  </div>
 </ng-template>
 <ng-template #elseBlock>
   <ng-content></ng-content>
 </ng-template>
-

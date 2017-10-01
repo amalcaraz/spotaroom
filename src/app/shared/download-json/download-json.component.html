@@ -1,4 +1,4 @@
-<button class="btn btn-primary" (click)="generateFileUrl();">{{name}}</button>
+<button type="button" [ngClass]="['btn', classes]" (click)="generateFileUrl();">{{name}}</button>
 
 <a #hiddenAnchor
   [style.visibility]="'hidden'"

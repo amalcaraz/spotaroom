@@ -1,13 +1,63 @@
-@import "../../../../styles/config/variables";
+@import "../../../../styles/config/index";
+@import "~bootstrap/scss/mixins";
 
-$home-card-height: 60px !default;
-
+$home-card-padding-x: $grid-gutter-width * 2;
+$home-card-padding-y: $grid-gutter-width * 2;
 .home-card {
 
+  background-color: $white;
   border: 1px solid $gray-500;
+  box-shadow: 2px 5px 5px -3px rgba($gray-800, 0.8);
+
+  @include media-breakpoint-up(lg) {
+    padding: $home-card-padding-x $home-card-padding-y;
+  }
 
   &__photo {
-    max-width: 100%;
+    width: 100%;
+  }
+
+  &__data {
+
+    padding: $home-card-padding-x $home-card-padding-y;
+
+    @include media-breakpoint-up(lg) {
+      padding: 0;
+    }
+
+  }
+
+  &__price {
+
+    font-family: $font-family-1;
+    font-size: $font-size-sm;
+    padding: 5px 7px 3px;
+    background-color: $black;
+    color: $yellow;
+    border-radius: 20%;
+
+    margin-bottom: $home-card-padding-y;
+    display: inline-block;
+    white-space: nowrap;
+
+  }
+
+  &__title {
+    display: inline;
+    padding-right: $home-card-padding-x;
+  }
+
+  .btn {
+
+    display: block;
+    margin-top: $grid-gutter-width;
+    width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      display: inline-block;
+      width: auto;
+    }
+
   }
 
 }

@@ -1,13 +1,16 @@
-@import "../../../styles/config/variables";
+@import "../../../styles/config/index";
 
-$side-nav__filter-box-spacer: $spacer-y * 3;
+$side-nav__filter-box-spacer: $spacer-y * 2;
+$side-nav-padding-x: $grid-gutter-width * 2;
+$side-nav-padding-y: $grid-gutter-width * 2;
 
 .side-nav {
 
-  background-color: red;
+  padding: $side-nav-padding-x $side-nav-padding-y ;
+  background-color: rgba($gray-800, 0.2);
 
   &__filter-box {
-    margin-top: $spacer-y * 4;
+    margin-top: $side-nav__filter-box-spacer;
   }
 
 }

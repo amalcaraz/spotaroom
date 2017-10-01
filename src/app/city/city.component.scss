@@ -1,7 +1,12 @@
-@import "../../styles/config/variables";
+@import "../../styles/config/index";
+
+$city-padding-x: $grid-gutter-width * 2;
+$city-padding-y: $grid-gutter-width * 2;
 
 .city__content {
   height: 100%;
-  overflow: auto;
-  padding-top: $spacer-y;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: $city-padding-y $city-padding-x;
+
 }

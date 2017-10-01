@@ -1,10 +1,20 @@
+// Misc
 $icon-font-path: '../../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
-$font-family-base: $font-family-2;
 
-$grid-gutter-width: 5px;
+// Font
+$font-family-base: $font-family-2;
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-sm: .875rem;
+$line-height-lg: 1.5;
+$line-height-sm: 0.75;
+
+// Grid and Rhythm
+$grid-gutter-width: 10px;
 $spacer: $spacer-y;
 
-$body-bg:    $gray-500;
+// Colors
+$body-bg: $gray-500;
 $body-color: $black;
 
 $colors: (
@@ -27,4 +37,20 @@ $theme-colors: (
   danger: $red,
   light: $gray-100,
   dark: $gray-800
+);
+
+// Buttons
+$btn-border-radius: 0;
+$input-btn-padding-y: .5rem;
+$input-btn-padding-x: 1.25rem;
+$input-btn-line-height: 1.25;
+
+
+//Breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
 );

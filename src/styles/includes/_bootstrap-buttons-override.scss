@@ -1,0 +1,27 @@
+@import "../config/index";
+
+// Custom buttons!!
+
+.btn {
+
+  font-family: $font-family-1;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  color: $white;
+
+}
+
+
+//
+// Alternate buttons
+//
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    border-bottom: 6px solid desaturate(darken($value, 10%), 10%);
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../../styles/config/index";
+
+.btn {
+  font-family: $font-family-base;
+  text-transform: capitalize;
+
+  &:after {
+    float: right;
+    margin-top: .5em;
+  }
+}
+
+.dropdown-item {
+
+  text-transform: capitalize;
+  cursor: pointer;
+}

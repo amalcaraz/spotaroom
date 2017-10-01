@@ -1,9 +1,10 @@
-<div ngbDropdown class="d-inline-block">
-  <button class="btn btn-outline-primary" [attr.id]="id" ngbDropdownToggle>{{selected}}</button>
+<div ngbDropdown>
+  <button [ngClass]="['btn', classes]" [attr.id]="id" ngbDropdownToggle>{{selected}}</button>
   <div ngbDropdownMenu [attr.aria-labelledby]="id">
     <button *ngFor="let option of options"
             (click)="onClickOption(option)"
             type="button"
+            [class.active]="option === selected"
             class="dropdown-item">
       {{option}}
     </button>

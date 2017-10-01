@@ -1,13 +1,20 @@
 <div class="home-card">
   <div class="row">
-    <div class="col-3">
+    <div class="col-xs-12 col-lg-3">
       <img class="home-card__photo" [src]="homeCard.mainPhotoUrl">
     </div>
-    <div class="col-9">
-      <span class="home-card__title">{{homeCard.title}}</span>
-      <span class="home-card__price">{{homeCard.pricePerMonth}}</span>
-      <a class="btn btn-secondary home-card__detail" href="#">More details</a>
-      <a class="btn btn-primary home-card__book" href="#">Book now!</a>
+    <div class="col-xs-12 col-lg-9">
+      <div class="home-card__data d-lg-flex flex-lg-column h-100">
+        <div class="d-flex">
+          <p class="home-card__title">{{homeCard.title}}</p>
+          <span class="home-card__price align-self-start ml-auto">{{homeCard.pricePerMonth}} <span>€</span></span>
+        </div>
+        <div class="home-card__btns mt-auto text-right">
+          <a href="#" (click)="$event.preventDefault()" class="btn btn-secondary home-card__btns__detail">More
+            details</a>
+          <a href="#" (click)="$event.preventDefault()" class="btn btn-primary home-card__btns__book">Book now!</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

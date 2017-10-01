@@ -2,9 +2,11 @@
   <div class="col-3">
     <sar-side-nav></sar-side-nav>
   </div>
-  <div class="col-9 city__content">
-    <sar-loader [loading]="this.loading$ | async">
-      <sar-home-card-list [homeCards]="this.homeCards$ | async"></sar-home-card-list>
-    </sar-loader>
+  <div class="col-9 pl-0">
+    <div class="city__content">
+      <sar-loader [loading]="this.loading$ | async">
+        <sar-home-card-list [homeCards]="this.homeCards$ | async"></sar-home-card-list>
+      </sar-loader>
+    </div>
   </div>
 </div>

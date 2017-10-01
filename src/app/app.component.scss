@@ -1,9 +1,8 @@
-@import "../styles/config/variables";
+@import "../styles/config/index";
 
 .app {
   max-width: $app-max-width;
   margin: 0 auto;
-  background-color: $white;
 
   &__header {
     flex: 0 0 auto;
@@ -12,5 +11,9 @@
   &__main {
     flex: 1 1 auto;
     overflow: hidden;
+  }
+
+  .col {
+    padding: 0;
   }
 }
