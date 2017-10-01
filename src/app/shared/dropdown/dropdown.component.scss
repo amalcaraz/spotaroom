@@ -3,10 +3,13 @@
 .btn {
   font-family: $font-family-base;
   text-transform: capitalize;
+  position: relative;
 
   &:after {
-    float: right;
-    margin-top: .5em;
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    margin-top: 0;
   }
 }
 
