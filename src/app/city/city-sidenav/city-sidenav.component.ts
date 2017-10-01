@@ -4,10 +4,21 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/take';
 
-import { getFilters, getHomeCardsFiltered, getOrders, getSelectedFilter, getSelectedOrder } from '../city.selectors';
+import {
+  getCities,
+  getFilters,
+  getHomeCardsFiltered,
+  getOrders,
+  getSelectedFilter,
+  getSelectedOrder
+} from '../city.selectors';
 import { State } from '../city.reducer';
 import { SetFilter, SetOrder } from '../city.actions';
 import { HomeCard } from '../../core/homecard/homecard.model';
+import { Router } from '@angular/router';
+import { getRouterState } from '../../core/core.selectors';
+import { RouterState } from '../../core/core.reducer';
+import { RouterReducerState } from '@ngrx/router-store';
 
 
 @Component({
@@ -18,19 +29,37 @@ import { HomeCard } from '../../core/homecard/homecard.model';
 })
 export class CitySideNavComponent {
 
+  cities$: Observable<string[]>;
   filters$: Observable<string[]>;
   orders$: Observable<string[]>;
+
+  selectedCity$: Observable<string>;
   selectedFilter$: Observable<string>;
   selectedOrder$: Observable<string>;
+
   currentHomeCard$: Observable<HomeCard[]>;
 
-  constructor(private _store: Store<State>) {
+  constructor(private _store: Store<State>,
+              private _router: Router) {
 
+    this.cities$ = this._store.select(getCities);
     this.filters$ = this._store.select(getFilters);
     this.orders$ = this._store.select(getOrders);
+
+    this.selectedCity$ = this._store
+      .select(getRouterState)
+      .map((routerState: RouterReducerState<RouterState>) => routerState.state.params['city']);
+
     this.selectedFilter$ = this._store.select(getSelectedFilter);
     this.selectedOrder$ = this._store.select(getSelectedOrder);
+
     this.currentHomeCard$ = this._store.select(getHomeCardsFiltered);
+
+  }
+
+  onCityChange(city: string) {
+
+    this._router.navigate([city]);
 
   }
 

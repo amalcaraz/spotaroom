@@ -21,7 +21,7 @@ export class HomeCardEffects {
   @Effect()
   load$: Observable<Action> = this.actions$
     .ofType<LoadHomeCard>(LOAD)
-    .debounceTime(1000, async)
+    .debounceTime(500, async)
     .map((action: LoadHomeCard) => action.payload)
     .switchMap((payload: LoadHomeCardPayload) => {
 

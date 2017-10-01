@@ -3,22 +3,25 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ASCENDING_ORDER, DEFAULT_FILTER, State } from './city.reducer';
 import { getAll } from '../core/homecard/homecard.selectors';
 import { HomeCard } from '../core/homecard/homecard.model';
+import { getRouterState } from '../core/core.selectors';
 
 
 // Private selectors
-export const _getFilters = (state: State) => state.filters;
 export const _getSelectedFilter = (state: State) => state.selectedFilter;
-export const _getOrders = (state: State) => state.orders;
 export const _getSelectedOrder = (state: State) => state.selectedOrder;
+export const _getCities = (state: State) => state.cities;
+export const _getFilters = (state: State) => state.filters;
+export const _getOrders = (state: State) => state.orders;
 
 
 // Public selectors
 export const getCityState = createFeatureSelector<State>('city');
 
-export const getFilters = createSelector(getCityState, _getFilters);
 export const getSelectedFilter = createSelector(getCityState, _getSelectedFilter);
-export const getOrders = createSelector(getCityState, _getOrders);
 export const getSelectedOrder = createSelector(getCityState, _getSelectedOrder);
+export const getCities = createSelector(getCityState, _getCities);
+export const getFilters = createSelector(getCityState, _getFilters);
+export const getOrders = createSelector(getCityState, _getOrders);
 
 
 /**
@@ -35,16 +38,27 @@ export const FILTER_MAP = {
   'residences': 'residence'
 };
 
-export const getHomeCardsFiltered = createSelector(getAll, getSelectedFilter, getSelectedOrder, (homeCards, filter, order) => {
+export const getHomeCardsFiltered =
+  createSelector(getAll, getRouterState, getSelectedFilter, getSelectedOrder, (homeCards, routerState, filter, order) => {
 
   let result: HomeCard[] = homeCards;
+  const selectedCity: string = routerState.state.params['city'];
 
+  // Filter by city
+  if (selectedCity) {
+
+    result = result.filter((homeCard: HomeCard) => homeCard.city === selectedCity);
+
+  }
+
+  // Filter by selected filter
   if (filter !== DEFAULT_FILTER) {
 
     result = result.filter((homeCard: HomeCard) => homeCard.type === FILTER_MAP[filter]);
 
   }
 
+  // Sort by selected order
   result = result
     .slice()
     .sort((a: HomeCard, b: HomeCard) => order === ASCENDING_ORDER
