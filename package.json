@@ -4,8 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --disable-host-check",
+    "start": "npm run serve",
+    "serve": "ng serve --disable-host-check",
     "build": "ng build",
+    "serve:prod": "ng serve --prod --aot --disable-host-check",
+    "build:prod": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
