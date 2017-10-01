@@ -1,0 +1,7 @@
+<a *ngIf="(responsive$ | async)?.viewportWidth <= _fixedBreakpoint"
+  class="side-nav-button"
+   role="button"
+   [class.active]="isOpen$ | async"
+   (click)="toggle()">
+  <ng-content></ng-content>
+</a>

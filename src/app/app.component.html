@@ -1,12 +1,8 @@
-<div class="app container-fluid d-flex flex-column flex-nowrap h-100">
-  <header class="row app__header">
-    <div class="col">
-      <sar-header></sar-header>
-    </div>
+<div class="app d-flex flex-column flex-nowrap h-100">
+  <header class="app__header">
+    <sar-header></sar-header>
   </header>
-  <main class="row app__main">
-    <div class="col">
-      <router-outlet></router-outlet>
-    </div>
+  <main class="app__main container-fluid">
+    <router-outlet></router-outlet>
   </main>
 </div>

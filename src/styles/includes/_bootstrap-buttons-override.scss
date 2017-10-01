@@ -11,8 +11,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  color: $white;
+}
 
+.btn, .btn:active, .btn:focus {
+  color: $white;
 }
 
 

@@ -11,7 +11,7 @@ import { getRouterState } from '../core/core.selectors';
 import { getHomeCardsFiltered, getSelectedFilter } from './city.selectors';
 import { LoadHomeCard } from '../core/homecard/homecard.actions';
 import { getLoading } from '../core/homecard/homecard.selectors';
-import 'rxjs/add/operator/do';
+import { State } from '../core/homecard/homecard.reducer';
 
 
 @Component({
@@ -20,8 +20,6 @@ import 'rxjs/add/operator/do';
   styleUrls: ['city.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-
-
 export class CityComponent implements OnDestroy {
 
   loading$: Observable<boolean>;
@@ -29,7 +27,7 @@ export class CityComponent implements OnDestroy {
 
   private _loadSubscription: Subscription;
 
-  constructor(private _store: Store<any>) {
+  constructor(private _store: Store<State>) {
 
     // Dispatches a LOAD action to the store every time the city param or filters change in order to load new homeCards
     this._loadSubscription = Observable

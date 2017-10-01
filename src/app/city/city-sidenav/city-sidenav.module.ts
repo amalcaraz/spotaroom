@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { SideNavComponent } from './side-nav.component';
+import { CitySideNavComponent } from './city-sidenav.component';
 import { SharedModule } from '../../shared/shared.module';
 
 
@@ -9,11 +9,11 @@ import { SharedModule } from '../../shared/shared.module';
     SharedModule,
   ],
   declarations: [
-    SideNavComponent
+    CitySideNavComponent
   ],
   exports: [
-    SideNavComponent
+    CitySideNavComponent
   ]
 })
-export class SideNavModule {
+export class CitySideNavModule {
 }

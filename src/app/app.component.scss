@@ -1,8 +1,6 @@
 @import "../styles/config/index";
 
 .app {
-  max-width: $app-max-width;
-  margin: 0 auto;
 
   &__header {
     flex: 0 0 auto;
@@ -10,10 +8,7 @@
 
   &__main {
     flex: 1 1 auto;
+    height: 100%;
     overflow: hidden;
-  }
-
-  .col {
-    padding: 0;
   }
 }

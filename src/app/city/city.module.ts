@@ -3,7 +3,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { CityRoutingModule } from './city-routing.module';
 import { CityComponent } from './city.component';
-import { SideNavModule } from './side-nav/side-nav.module';
+import { CitySideNavModule } from './city-sidenav/city-sidenav.module';
 import { HomeCardListModule } from './home-card-list/home-card-list.module';
 import { reducer } from './city.reducer';
 import { SharedModule } from '../shared/shared.module';
@@ -13,7 +13,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     SharedModule,
     HomeCardListModule,
-    SideNavModule,
+    CitySideNavModule,
     CityRoutingModule,
     StoreModule.forFeature('city', reducer)
   ],

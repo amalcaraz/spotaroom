@@ -40,10 +40,10 @@ export function reducer(state = initialState, action: Actions): State {
     case LOAD_SUCCESS: {
 
       const homeCards: HomeCard[] = action.payload;
-      const newBooks: HomeCard[] = homeCards.filter((homeCard: HomeCard) => !state.entities[homeCard.id]);
+      const newHomeCards: HomeCard[] = homeCards.filter((homeCard: HomeCard) => !state.entities[homeCard.id]);
 
-      const newIds: number[] = newBooks.map((homeCard: HomeCard) => homeCard.id);
-      const newEntities: HomeCardEntities = newBooks.reduce((entities: HomeCardEntities, homeCard: HomeCard) => ({
+      const newIds: number[] = newHomeCards.map((homeCard: HomeCard) => homeCard.id);
+      const newEntities: HomeCardEntities = newHomeCards.reduce((entities: HomeCardEntities, homeCard: HomeCard) => ({
         ...entities,
         [homeCard.id]: homeCard
       }), {});

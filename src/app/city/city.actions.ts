@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 
 
-export const SET_FILTER = '[Book] Set Filter';
-export const SET_ORDER = '[Book] Set Order';
+export const SET_FILTER = '[City] Set Filter';
+export const SET_ORDER = '[City] Set Order';
 
 export class SetFilter implements Action {
   readonly type = SET_FILTER;

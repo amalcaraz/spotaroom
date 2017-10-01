@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DropdownModule } from './dropdown/dropdown.module';
 import { LoaderModule } from './loader/loader.module';
 import { DownloadJsonModule } from './download-json/download-json.module';
+import { SideNavModule } from './side-nav/side-nav.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DownloadJsonModule } from './download-json/download-json.module';
     NgbModule,
     DropdownModule,
     LoaderModule,
-    DownloadJsonModule
+    DownloadJsonModule,
+    SideNavModule
   ]
 })
 export class SharedModule {

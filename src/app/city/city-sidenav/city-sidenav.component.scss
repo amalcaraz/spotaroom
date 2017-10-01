@@ -1,0 +1,31 @@
+@import "../../../styles/config/index";
+@import "~bootstrap/scss/mixins";
+
+$city-sidenav__filter-box-spacer: $spacer-y * 2;
+$city-sidenav-padding-x: $grid-gutter-width * 2;
+$city-sidenav-padding-y: $grid-gutter-width * 2;
+
+.city-sidenav {
+
+  padding: $city-sidenav-padding-x $city-sidenav-padding-y;
+  color: $white;
+
+  @include media-breakpoint-up(lg) {
+    color: $body-color;
+    background-color: rgba($white, 1);
+  }
+
+  &__filter-box {
+    margin-top: $city-sidenav__filter-box-spacer;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+
+  :host /deep/ .side-nav:before {
+
+    background-color: rgba($gray-800, 0.2);
+
+  }
+
+}

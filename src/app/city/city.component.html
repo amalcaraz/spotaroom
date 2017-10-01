@@ -1,8 +1,8 @@
-<div class="row h-100">
-  <div class="col-3">
-    <sar-side-nav></sar-side-nav>
+<div class="row flex-nowrap h-100">
+  <div class="col col-lg-3 p-0">
+    <sar-city-sidenav></sar-city-sidenav>
   </div>
-  <div class="col-9 pl-0">
+  <div class="col-xs-12 col-lg-9 p-0">
     <div class="city__content">
       <sar-loader [loading]="this.loading$ | async">
         <sar-home-card-list [homeCards]="this.homeCards$ | async"></sar-home-card-list>

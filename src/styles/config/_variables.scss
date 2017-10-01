@@ -7,6 +7,7 @@ $spacer-y: 1rem !default;
 
 // Header
 $header-height: 70px;
+$header-height-mobile: 50px;
 
 
 // Colors
@@ -14,11 +15,11 @@ $white:  #fff;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
 $gray-300: #dee2e6;
-$gray-400: #ced4da; // d1d1d1
-$gray-500: #adb5bd; // a2a2a2
+$gray-400: #d1d1d1; // $gray-400: #ced4da;
+$gray-500: #a2a2a2; // $gray-500: #adb5bd;
 $gray-600: #868e96;
 $gray-700: #495057;
-$gray-800: #343a40; // 333333
+$gray-800: #333333; // $gray-800: #343a40;
 $gray-900: #212529;
 $black:  #000;
 

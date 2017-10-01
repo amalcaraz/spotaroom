@@ -11,12 +11,12 @@ import { HomeCard } from '../../core/homecard/homecard.model';
 
 
 @Component({
-  selector: 'sar-side-nav',
-  templateUrl: 'side-nav.component.html',
-  styleUrls: ['side-nav.component.scss'],
+  selector: 'sar-city-sidenav',
+  templateUrl: 'city-sidenav.component.html',
+  styleUrls: ['city-sidenav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SideNavComponent {
+export class CitySideNavComponent {
 
   filters$: Observable<string[]>;
   orders$: Observable<string[]>;
