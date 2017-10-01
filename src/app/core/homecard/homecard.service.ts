@@ -11,6 +11,7 @@ import { CityId } from '../../app.model';
 import { HomeCard, HomeCardRequestOptions, HomeCardResponse } from './homecard.model';
 import { MarkerService } from '../marker/marker.service';
 import { Marker, MarkerResponse } from '../marker/marker.model';
+import { SarQueryEncoder } from '../utils/query-encoder';
 
 
 export const DEFAULT_HOME_CARD_OPTIONS: HomeCardRequestOptions = {
@@ -75,7 +76,7 @@ export class HomeCardService {
       .map((marker: Marker) => 'ids[]=' + marker.id)
       .join('&');
 
-    return new URLSearchParams(idParams);
+    return new URLSearchParams(idParams, new SarQueryEncoder());
 
   }
 

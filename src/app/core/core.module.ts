@@ -9,10 +9,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MarkerService } from './marker/marker.service';
 import { CustomRouterStateSerializer, reducers } from './core.reducer';
 import { environment } from '../../environments/environment';
-import { SettingsService } from './settings/settings.service';
 import { HomeCardModule } from './homecard/homecard.module';
 import { ResponsiveModule } from './responsive/responsive.module';
 import { WindowRef } from './window/window.service';
+import { SettingsModule } from './settings/settings.module';
 
 
 @NgModule({
@@ -23,13 +23,13 @@ import { WindowRef } from './window/window.service';
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument({maxAge: 10}) : [],
     StoreRouterConnectingModule,
+    SettingsModule,
     ResponsiveModule,
     HomeCardModule
   ],
   exports: [],
   providers: [
     WindowRef,
-    SettingsService,
     MarkerService,
     {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
   ]

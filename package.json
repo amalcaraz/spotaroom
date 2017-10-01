@@ -10,6 +10,7 @@
     "serve:prod": "ng serve --prod --aot --disable-host-check",
     "build:prod": "ng build --prod --aot",
     "test": "ng test",
+    "test:coverage": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

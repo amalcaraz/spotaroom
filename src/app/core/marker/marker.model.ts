@@ -19,9 +19,3 @@ export interface MarkerResponse {
 export interface MarkerRequestOptions {
   filter?: string;
 }
-
-export const DEFAULT_MARKER_FILTER = 'all';
-
-export const DEFAULT_MARKER_OPTIONS: MarkerRequestOptions = {
-  filter: DEFAULT_MARKER_FILTER
-};

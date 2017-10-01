@@ -6,9 +6,15 @@ import 'rxjs/add/operator/map';
 
 import { SettingsService } from '../settings/settings.service';
 import { CityId } from '../../app.model';
-import { DEFAULT_MARKER_OPTIONS, MarkerRequestOptions, MarkerResponse } from './marker.model';
-import { DEFAULT_FILTER } from '../../city/city.reducer';
+import { MarkerRequestOptions, MarkerResponse } from './marker.model';
+import { SarQueryEncoder } from '../utils/query-encoder';
 
+
+export const DEFAULT_MARKER_FILTER = 'all';
+
+export const DEFAULT_MARKER_OPTIONS: MarkerRequestOptions = {
+  filter: DEFAULT_MARKER_FILTER
+};
 
 @Injectable()
 export class MarkerService {
@@ -37,9 +43,9 @@ export class MarkerService {
 
   private obtainMarkerParams(options: MarkerRequestOptions): URLSearchParams {
 
-    const params = new URLSearchParams();
+    const params = new URLSearchParams('', new SarQueryEncoder());
 
-    if (options.filter !== DEFAULT_FILTER) {
+    if (options.filter !== DEFAULT_MARKER_FILTER) {
 
       params.append('type[]', options.filter);
 

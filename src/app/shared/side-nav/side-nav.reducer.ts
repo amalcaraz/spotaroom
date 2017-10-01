@@ -75,7 +75,8 @@ export function reducer(state = initialState, action: Actions): State {
       }
 
       const newState: State = {
-        ...state
+        ...state,
+        ids: state.ids.filter((_id: string) => _id !== id)
       };
       delete newState[id];
 

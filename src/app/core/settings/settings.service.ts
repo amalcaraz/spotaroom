@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+
+
+export const SETTINGS = new InjectionToken('SETTINGS');
 
 @Injectable()
 export class SettingsService {
 
-  private _settings = environment.settings;
-
-  constructor() {
+  constructor(@Optional() @Inject(SETTINGS) private _settings) {
   }
 
   get(key: string) {

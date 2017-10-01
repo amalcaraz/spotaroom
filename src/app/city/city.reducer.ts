@@ -1,5 +1,5 @@
 import { Actions, SET_FILTER, SET_ORDER } from './city.actions';
-import { DEFAULT_MARKER_FILTER as MARKER_DEFAULT_FILTER } from '../core/marker/marker.model';
+import { DEFAULT_MARKER_FILTER } from '../core/marker/marker.service';
 
 
 export interface State {
@@ -9,7 +9,7 @@ export interface State {
   orders: string[];
 }
 
-export const DEFAULT_FILTER = MARKER_DEFAULT_FILTER;
+export const DEFAULT_FILTER = DEFAULT_MARKER_FILTER;
 export const ASCENDING_ORDER = 'ascending';
 export const DESCENDING_ORDER = 'descending';
 
