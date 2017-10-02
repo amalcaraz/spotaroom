@@ -22,7 +22,7 @@ The only thing you need is:
 Before start working, you have to clone this repository and install all the dependencies in your local machine by running:
 ```bash
 # Clone the repo and enter inside
-git clone git@github.com:amalcaraz/spotaroom.git
+git clone https://github.com/amalcaraz/spotaroom.git
 cd spotaroom
 
 # install node dependencies
