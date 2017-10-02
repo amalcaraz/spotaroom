@@ -4,7 +4,7 @@
     <div class="city-sidenav__filter-box">
       <h4>City</h4>
       <sar-dropdown [id]="'city-sidenav-cities'"
-                    [classes]="'btn-secondary text-left btn-block'"
+                    [classes]="'btn-primary text-left btn-block'"
                     [selected]="selectedCity$ | async"
                     (selectedChange)="onCityChange($event)"
                     [options]="cities$ | async"></sar-dropdown>
@@ -12,7 +12,7 @@
     <div class="city-sidenav__filter-box">
       <h4>Filter by Type</h4>
       <sar-dropdown [id]="'city-sidenav-filters'"
-                    [classes]="'btn-secondary text-left btn-block'"
+                    [classes]="'btn-primary text-left btn-block'"
                     [selected]="selectedFilter$ | async"
                     (selectedChange)="onFilterChange($event)"
                     [options]="filters$ | async"></sar-dropdown>
@@ -20,14 +20,16 @@
     <div class="city-sidenav__filter-box">
       <h4>Sort by price</h4>
       <sar-dropdown [id]="'city-sidenav-order'"
-                    [classes]="'btn-secondary text-left btn-block'"
+                    [classes]="'btn-primary text-left btn-block'"
                     [selected]="selectedOrder$ | async"
                     (selectedChange)="onOrderChange($event)"
                     [options]="orders$ | async"></sar-dropdown>
     </div>
     <div class="mt-4">
-      <sar-download-json [classes]="'btn-primary w-100'"
-                         [data]="this.currentHomeCard$ | async"></sar-download-json>
+      <sar-download-json [classes]="'btn-secondary w-100'"
+                         [disabled]="homeCardLoading$ | async"
+                         [fileName]="jsonFileName$ | async"
+                         [data]="currentHomeCard$ | async"></sar-download-json>
     </div>
   </div>
 </sar-side-nav>

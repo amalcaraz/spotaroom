@@ -1,4 +1,7 @@
-<button type="button" [ngClass]="['btn', classes]" (click)="generateFileUrl();">{{name}}</button>
+<button type="button"
+        [disabled]="disabled"
+        [ngClass]="['btn', classes]"
+        (click)="generateFileUrl();">{{name}}</button>
 
 <a #hiddenAnchor
   [style.visibility]="'hidden'"

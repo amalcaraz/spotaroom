@@ -11,12 +11,25 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+
+    $disable-color: $gray-800;
+
+    opacity: .40;
+    background-color: $disable-color;
+    border-color: desaturate(darken($disable-color, 10%), 10%);
+    border-bottom-width: 6px;
+    border-bottom-style: solid;
+    @include box-shadow(none);
+  }
+
 }
 
 .btn, .btn:active, .btn:hover, .btn:focus {
   color: $white;
 }
-
 
 //
 // Alternate buttons

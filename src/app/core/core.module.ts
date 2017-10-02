@@ -13,6 +13,7 @@ import { HomeCardModule } from './homecard/homecard.module';
 import { ResponsiveModule } from './responsive/responsive.module';
 import { WindowRef } from './window/window.service';
 import { SettingsModule } from './settings/settings.module';
+import { MarkerModule } from './marker/marker.module';
 
 
 @NgModule({
@@ -25,12 +26,12 @@ import { SettingsModule } from './settings/settings.module';
     StoreRouterConnectingModule,
     SettingsModule,
     ResponsiveModule,
+    MarkerModule,
     HomeCardModule
   ],
   exports: [],
   providers: [
     WindowRef,
-    MarkerService,
     {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
   ]
 })

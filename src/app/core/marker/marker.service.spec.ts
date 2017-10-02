@@ -77,7 +77,7 @@ describe('MarkerService', () => {
         });
 
       this.markerService
-        .get(mockedCityParam, getInputOptions)
+        .getByCity(mockedCityParam, getInputOptions)
         .subscribe((result: MarkerResponse) => {
 
           expect(result).toBe(response);
@@ -102,7 +102,7 @@ describe('MarkerService', () => {
         });
 
       this.markerService
-        .get(mockedCityParam)
+        .getByCity(mockedCityParam)
         .subscribe(
           () => {
             fail('should fail');

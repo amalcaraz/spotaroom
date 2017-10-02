@@ -1,8 +1,9 @@
-import { MarkerRequestOptions } from '../marker/marker.model';
+import { MarkerId, MarkerRequestOptions } from '../marker/marker.model';
 
+export type HomeCardId = MarkerId;
 
 export interface HomeCard {
-  id: number;
+  id: HomeCardId;
   features: {
     [featureId: string]: boolean;
   };
@@ -48,6 +49,5 @@ export interface HomeCardResponse {
 }
 
 export interface HomeCardRequestOptions extends MarkerRequestOptions {
-  count?: number;
   offset?: number;
 }

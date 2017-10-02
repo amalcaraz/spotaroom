@@ -8,12 +8,14 @@ import { SettingsService } from '../settings/settings.service';
 import { CityId } from '../../app.model';
 import { MarkerRequestOptions, MarkerResponse } from './marker.model';
 import { SarQueryEncoder } from '../utils/query-encoder';
+import { environment } from '../../../environments/environment';
 
 
 export const DEFAULT_MARKER_FILTER = 'all';
 
 export const DEFAULT_MARKER_OPTIONS: MarkerRequestOptions = {
-  filter: DEFAULT_MARKER_FILTER
+  filter: DEFAULT_MARKER_FILTER,
+  count: environment.maxItems
 };
 
 @Injectable()
@@ -28,7 +30,7 @@ export class MarkerService {
 
   }
 
-  get(city: CityId, options?: MarkerRequestOptions): Observable<MarkerResponse> {
+  getByCity(city: CityId, options?: MarkerRequestOptions): Observable<MarkerResponse> {
 
     options = {...DEFAULT_MARKER_OPTIONS, ...options};
 

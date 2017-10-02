@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { ASCENDING_ORDER, DEFAULT_FILTER, State } from './city.reducer';
-import { getAll } from '../core/homecard/homecard.selectors';
+import { getAllHomeCards } from '../core/homecard/homecard.selectors';
 import { HomeCard } from '../core/homecard/homecard.model';
 import { getRouterState } from '../core/core.selectors';
 
@@ -39,7 +39,7 @@ export const FILTER_MAP = {
 };
 
 export const getHomeCardsFiltered =
-  createSelector(getAll, getRouterState, getSelectedFilter, getSelectedOrder, (homeCards, routerState, filter, order) => {
+  createSelector(getAllHomeCards, getRouterState, getSelectedFilter, getSelectedOrder, (homeCards, routerState, filter, order) => {
 
   let result: HomeCard[] = homeCards;
   const selectedCity: string = routerState.state.params['city'];

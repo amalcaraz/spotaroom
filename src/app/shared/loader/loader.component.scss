@@ -1,6 +1,7 @@
 @import "../../../styles/config/index";
 
 $loader-size: 50px !default;
+$loader-color: $white !default;
 
 @keyframes bounce_circularG {
   0% {
@@ -38,7 +39,7 @@ $loader-size: 50px !default;
   animation-duration: 1.1s;
   animation-iteration-count: infinite;
   animation-direction: normal;
-  background-color: $green;
+  background-color: $loader-color;
 }
 
 .circularG_8 {

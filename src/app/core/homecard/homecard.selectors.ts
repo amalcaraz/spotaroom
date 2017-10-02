@@ -11,15 +11,13 @@ export const _getError = (state: State) => state.error;
 
 
 // Public selectors
-export const getCityState = createFeatureSelector<State>('homecard');
+export const getHomeCardState = createFeatureSelector<State>('homecard');
 
-export const getEntities = createSelector(getCityState, _getEntities);
-export const getIds = createSelector(getCityState, _getIds);
-export const getLoading = createSelector(getCityState, _getLoading);
-export const getError = createSelector(getCityState, _getError);
+export const getEntities = createSelector(getHomeCardState, _getEntities);
+export const getIds = createSelector(getHomeCardState, _getIds);
+export const getLoading = createSelector(getHomeCardState, _getLoading);
+export const getError = createSelector(getHomeCardState, _getError);
 
-export const getAll = createSelector(getEntities, getIds, (entities, ids) => {
+export const getAllHomeCards = createSelector(getEntities, getIds, (entities, ids) => {
   return ids.map(id => entities[id]);
 });
-
-

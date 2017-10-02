@@ -12,6 +12,7 @@ export class DownloadJsonComponent {
   @Input() name = 'Download JSON';
   @Input() classes = 'btn-primary';
   @Input() fileName = 'data.json';
+  @Input() disabled = false;
   @Input() data: {};
 
   @ViewChild('hiddenAnchor') hiddenAnchor: ElementRef;
