@@ -9,10 +9,17 @@
     "build": "ng build",
     "serve:prod": "ng serve --prod --aot --disable-host-check",
     "build:prod": "ng build --prod --aot",
+    "build:prod:github": "npm run build:prod -- --base-href 'https://amalcaraz.github.io/spotaroom/'",
+    "deploy": "npm run build:prod:github && ngh",
     "test": "ng test",
     "test:coverage": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
+  },
+  "author": "Angel Manzano Alcaraz <amalcaraz89@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amalcaraz/spotaroom.git"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +50,7 @@
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
+    "angular-cli-ghpages": "^0.5.1",
     "codelyzer": "~3.2.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
