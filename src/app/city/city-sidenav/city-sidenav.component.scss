@@ -12,7 +12,6 @@ $city-sidenav-padding-y: $grid-gutter-width * 2;
 
   @include media-breakpoint-up(lg) {
     color: $body-color;
-    background-color: rgba($white, 1);
   }
 
   &__filter-box {
@@ -22,9 +21,19 @@ $city-sidenav-padding-y: $grid-gutter-width * 2;
 
 @include media-breakpoint-up(lg) {
 
-  :host /deep/ .side-nav:before {
+  :host /deep/ {
 
-    background-color: rgba($gray-800, 0.2);
+    .side-nav__content {
+
+      background-color: rgba($white, 1);
+
+    }
+
+    .side-nav:before {
+
+      background-color: rgba($gray-800, 0.2);
+
+    }
 
   }
 

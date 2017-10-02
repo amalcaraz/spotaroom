@@ -7,13 +7,18 @@ $side-nav-background-color: $black;
 
   display: inline;
 
+  &__content {
+    height: 100%;
+    overflow-y: auto;
+  }
+
   &.fixed {
 
     position: absolute;
     top: 0;
     left: 0;
     z-index: 999;
-    height: 100vh;
+    height: 100%;
     width: 300px;
     max-width: 100vh;
     transform: translateX(-100%);

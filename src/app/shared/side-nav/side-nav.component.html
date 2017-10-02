@@ -1,5 +1,7 @@
 <div class="side-nav"
      [class.active]="isOpen$ | async"
      [class.fixed]="(responsive$ | async)?.viewportWidth <= _fixedBreakpoint">
-  <ng-content></ng-content>
+  <div class="side-nav__content">
+    <ng-content></ng-content>
+  </div>
 </div>
