@@ -55,6 +55,12 @@ The build artifacts will be stored in the `dist/`. This is the folder which must
 In order to test the production build in local environment, run the next command: `npm run serve:prod`. And visit `http://localhost:4200/`.
 
 
+## Deploying the app to [GitHub Pages](https://pages.github.com/)
+
+Run `npm run deploy` to deploy the app to github pages (the build deployed is compiled with AOT).
+Then you can open it, navigating to: [https://amalcaraz.github.io/spotaroom/madrid](https://amalcaraz.github.io/spotaroom/madrid)
+
+
 ## Running unit tests
 
 Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io) with watcher.
