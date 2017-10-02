@@ -1,5 +1,5 @@
 import { HomeCard } from './homecard.model';
-import { Actions, LOAD, LOAD_FAILED, LOAD_SUCCESS } from './homecard.actions';
+import { Actions, ALREADY_LOADED, LOAD, LOAD_FAILED, LOAD_SUCCESS } from './homecard.actions';
 
 
 // TODO: Migrate this reducer to: @ngrx/entity
@@ -33,6 +33,15 @@ export function reducer(state = initialState, action: Actions): State {
         ...state,
         error: null,
         loading: true
+      };
+
+    }
+
+    case ALREADY_LOADED: {
+
+      return {
+        ...state,
+        loading: !state.loading
       };
 
     }

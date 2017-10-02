@@ -1,6 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { State } from './homecard.reducer';
+import { HomeCardEntities, State } from './homecard.reducer';
+import { MarkerId } from '../marker/marker.model';
+import { HomeCard } from './homecard.model';
 
 
 // Private selectors
@@ -20,4 +22,12 @@ export const getError = createSelector(getHomeCardState, _getError);
 
 export const getAllHomeCards = createSelector(getEntities, getIds, (entities, ids) => {
   return ids.map(id => entities[id]);
+});
+
+export const getAllHomeCardsFiltered = (ids: MarkerId[]) => createSelector(getEntities, (entities: HomeCardEntities) => {
+
+  return ids
+    .map((id: MarkerId) => entities[id])
+    .filter((homeCard: HomeCard) => !!homeCard);
+
 });

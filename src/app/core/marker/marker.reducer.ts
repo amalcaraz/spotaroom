@@ -1,7 +1,7 @@
 import { Marker, MarkerRequestOptions } from './marker.model';
-import { Actions, LOAD, LOAD_FAILED, LOAD_SUCCESS } from './marker.actions';
+import { Actions, ALREADY_LOADED, LOAD, LOAD_FAILED, LOAD_SUCCESS } from './marker.actions';
 import { CityId } from '../../app.model';
-import { DEFAULT_MARKER_FILTER } from './marker.service';
+import { DEFAULT_MARKER_FILTER, DEFAULT_MARKER_OPTIONS } from './marker.service';
 
 
 // TODO: Migrate this reducer to: @ngrx/entity
@@ -39,6 +39,15 @@ export function reducer(state = initialState, action: Actions): State {
 
     }
 
+    case ALREADY_LOADED: {
+
+      return {
+        ...state,
+        loading: !state.loading
+      };
+
+    }
+
     case LOAD_SUCCESS: {
 
       const city: CityId = action.payload.city;
@@ -46,7 +55,7 @@ export function reducer(state = initialState, action: Actions): State {
       let markers: Marker[] = action.payload.markers;
 
       // Store only the first count items (30)
-      markers = markers.slice(0, options.count);
+      markers = markers.slice(0, options.count || DEFAULT_MARKER_OPTIONS.count);
 
       // If the response items has been filtered, replace the stored items which has type equal to 'all'
       // This would not be necessary if the backend was serving the model with city and type properties.

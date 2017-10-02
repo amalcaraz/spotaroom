@@ -11,6 +11,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
+  transition: all .5s 0s;
+
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
