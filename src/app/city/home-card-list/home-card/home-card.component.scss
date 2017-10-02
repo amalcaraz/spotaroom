@@ -3,6 +3,7 @@
 
 $home-card-padding-x: $grid-gutter-width * 2;
 $home-card-padding-y: $grid-gutter-width * 2;
+
 .home-card {
 
   background-color: $white;
@@ -15,6 +16,13 @@ $home-card-padding-y: $grid-gutter-width * 2;
 
   &__photo {
     width: 100%;
+    transition: all .5s 0s ease;
+
+    &:hover {
+      filter: brightness(115%) saturate(50%);
+      box-shadow: 17px 17px 17px -5px rgba($black, 0.25)
+    }
+
   }
 
   &__data {
