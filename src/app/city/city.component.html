@@ -5,7 +5,13 @@
   <div class="col-xs-12 col-lg-9 p-0">
     <div class="city__content">
       <sar-loader [loading]="this.loading$ | async">
-        <sar-home-card-list [homeCards]="this.homeCards$ | async"></sar-home-card-list>
+        <ng-container *ngIf="(error$ | async); then thenBlock; else elseBlock"></ng-container>
+        <ng-template #thenBlock>
+          <ngb-alert [dismissible]="false"><strong>Error!</strong></ngb-alert>
+        </ng-template>
+        <ng-template #elseBlock>
+          <sar-home-card-list [homeCards]="this.homeCards$ | async"></sar-home-card-list>
+        </ng-template>
       </sar-loader>
     </div>
   </div>

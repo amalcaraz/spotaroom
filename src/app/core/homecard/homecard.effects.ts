@@ -26,14 +26,12 @@ import {
   LOAD_FAILED as MARKER_LOAD_FAILED,
   LOAD_SUCCESS as MARKER_LOAD_SUCCESS,
   LoadMarker,
-  LoadMarkerFailed,
-  LoadMarkerSuccess,
-  MarkerAlreadyLoaded
+  LoadMarkerFailed
 } from '../marker/marker.actions';
 import { HomeCard } from './homecard.model';
-import { getAllMarkersFiltered } from '../marker/marker.selectors';
 import { Marker, MarkerId } from '../marker/marker.model';
 import { getAllHomeCardsFiltered } from './homecard.selectors';
+import { getAllMarkersFiltered } from '../marker/marker.selectors';
 
 
 @Injectable()
@@ -49,36 +47,39 @@ export class HomeCardEffects {
       // In resume, every time we receive an action of kind "LoadHomeCard", we are dispatching two new actions to the store,
       // the first one is "LoadMarker" that loads the markers that the "HomeCardService" needs to retrieve the HomeCards,
       // and the second one is "LoadHomeCardSuccess" that store the fetched information,
-      // but this one is beeing delayed, until "LoadMarkerSuccess", "AlreadyLoaded" or "LoadMarkerFailed" are dispatched...
+      // but this one is being delayed, until "LoadMarkerSuccess", "AlreadyLoaded" or "LoadMarkerFailed" are dispatched...
       this
-        .waitUntilMarkersAreLoaded(payload)
-        .switchMap((markersIds: MarkerId[]) => {
+        .waitUntilMarkersAreLoaded()
+        .switchMap((action: Action) => this._store
+          .select(getAllMarkersFiltered(payload.city, payload.options))
+          .map((markers: Marker[]) => markers.map((marker: Marker) => marker.id))
+          .switchMap((markersIds: MarkerId[]) => {
 
-          return this
-            .checkIfHomeCardsAreAlreadyLoaded(markersIds)
-            .switchMap((isLoaded: boolean) => {
+            return this
+              .checkIfHomeCardsAreAlreadyLoaded(markersIds)
+              .switchMap((isLoaded: boolean) => {
 
-              if (!isLoaded) {
+                if (!isLoaded) {
 
-                // Next load action have to cancel the current one if it has not been finished
-                const nextLoad$ = this._actions$.ofType(LOAD).skip(1);
+                  // Next load action have to cancel the current one if it has not been finished
+                  const nextLoad$ = this._actions$.ofType(LOAD).skip(1);
 
-                return this._homeCardService
-                  .get(markersIds, payload.options)
-                  .takeUntil(nextLoad$)
-                  .map((homeCards: HomeCard[]) => new LoadHomeCardSuccess(homeCards))
-                  .catch((err) => Observable.of(new LoadHomeCardFailed(err)));
+                  return this._homeCardService
+                    .get(markersIds, payload.options)
+                    .takeUntil(nextLoad$)
+                    .map((homeCards: HomeCard[]) => new LoadHomeCardSuccess(homeCards))
+                    .catch((err) => Observable.of(new LoadHomeCardFailed(err)));
 
 
-              } else {
+                } else {
 
-                return Observable.of<Action>(new HomeCardAlreadyLoaded());
+                  return Observable.of<Action>(new HomeCardAlreadyLoaded());
 
-              }
+                }
 
-            });
-
-        }),
+              });
+          })
+        ),
       Observable.of(new LoadMarker(payload))
       )
     );
@@ -87,17 +88,28 @@ export class HomeCardEffects {
 
     return this._store
       .select(getAllHomeCardsFiltered(markersIds))
-      .map((markers: HomeCard[]) => markers.length === markersIds.length)
+      .map((markers: HomeCard[]) => markers.length > 0 && (markers.length === markersIds.length))
       .take(1) as Observable<boolean>;
 
   }
 
-  private waitUntilMarkersAreLoaded(payload: LoadHomeCardPayload): Observable<MarkerId[]> {
+  private waitUntilMarkersAreLoaded(): Observable<Action> {
 
     return this._actions$
       .filter((action: Action) => action.type === MARKER_LOAD_SUCCESS || action.type === MARKER_ALREADY_LOADED || action.type === MARKER_LOAD_FAILED)
-      .switchMap((action: LoadMarkerSuccess | MarkerAlreadyLoaded | LoadMarkerFailed) => this._store.select(getAllMarkersFiltered(payload.city, payload.options)))
-      .map((markers: Marker[]) => markers.map((marker: Marker) => marker.id));
+      .map((action: Action) => {
+
+        if (action.type === MARKER_LOAD_FAILED) {
+
+          return new LoadHomeCardFailed((action as LoadMarkerFailed).payload);
+
+        } else {
+
+          return action;
+
+        }
+
+      });
 
   }
 

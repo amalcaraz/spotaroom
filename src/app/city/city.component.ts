@@ -10,7 +10,7 @@ import { RouterState } from '../core/core.reducer';
 import { getRouterState } from '../core/core.selectors';
 import { getHomeCardsFiltered, getSelectedFilter } from './city.selectors';
 import { LoadHomeCard } from '../core/homecard/homecard.actions';
-import { getLoading } from '../core/homecard/homecard.selectors';
+import { getError, getLoading } from '../core/homecard/homecard.selectors';
 import { State } from '../core/homecard/homecard.reducer';
 
 
@@ -23,6 +23,7 @@ import { State } from '../core/homecard/homecard.reducer';
 export class CityComponent implements OnDestroy {
 
   loading$: Observable<boolean>;
+  error$: Observable<string>;
   homeCards$: Observable<HomeCard[]>;
 
   private _loadSubscription: Subscription;
@@ -43,6 +44,7 @@ export class CityComponent implements OnDestroy {
 
     // Listen to changes in the store
     this.loading$ = this._store.select(getLoading);
+    this.error$ = this._store.select(getError);
     this.homeCards$ = this._store.select(getHomeCardsFiltered);
 
   }

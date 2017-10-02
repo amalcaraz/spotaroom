@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { HomeCardResponse } from '../../core/homecard/homecard.model';
+import { HomeCard } from '../../core/homecard/homecard.model';
 
 
 @Component({
@@ -11,6 +11,6 @@ import { HomeCardResponse } from '../../core/homecard/homecard.model';
 })
 export class HomeCardListComponent {
 
-  @Input() homeCards: HomeCardResponse;
+  @Input() homeCards: HomeCard[];
 
 }
