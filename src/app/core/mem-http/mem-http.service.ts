@@ -72,8 +72,6 @@ export class MemHttpService implements InMemoryDbService {
       const collection: HomeCardResponse = {...this._homecards_ids};
       const ids: string[] = reqParams.getAll('ids[]');
 
-      debugger;
-
       const filteredHomeCards: HomeCard[] = !ids
         ? []
         : collection.data.homecards.filter((homeCard: HomeCard) => ids.indexOf(homeCard.id.toString()) !== -1);
