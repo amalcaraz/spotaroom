@@ -1,12 +1,10 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { MarkerService } from './marker/marker.service';
 import { CustomRouterStateSerializer, reducers } from './core.reducer';
 import { environment } from '../../environments/environment';
 import { HomeCardModule } from './homecard/homecard.module';
@@ -14,11 +12,12 @@ import { ResponsiveModule } from './responsive/responsive.module';
 import { WindowRef } from './window/window.service';
 import { SettingsModule } from './settings/settings.module';
 import { MarkerModule } from './marker/marker.module';
+import { MemHttpModule } from './mem-http/mem-http.module';
 
 
 @NgModule({
   imports: [
-    HttpModule,
+    MemHttpModule,
     NgbModule.forRoot(),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),

@@ -1,6 +1,7 @@
-import { QueryEncoder } from '@angular/http';
+import { HttpParameterCodec, HttpUrlEncodingCodec } from '@angular/common/http';
 
-export class SarQueryEncoder extends QueryEncoder {
+
+export class SarQueryEncoder extends HttpUrlEncodingCodec implements HttpParameterCodec {
 
   encodeKey(k: string): string {
 

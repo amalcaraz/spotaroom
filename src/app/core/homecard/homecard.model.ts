@@ -16,7 +16,8 @@ export interface HomeCard {
   monthlyPrice: {
     type: string;
     minimumPrice: number;
-    fixedPrice: number;
+    fixedPrice?: number;
+    pricesByMonth?: {[month: string]: number};
   };
   visited: boolean;
   neighborhoodName: string;

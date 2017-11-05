@@ -63,6 +63,7 @@ export class MarkerEffects {
 
     return this._store
       .select(getAllMarkersFiltered(payload.city, payload.options))
+      .do((a) => console.log('aaaaaaaaaa', a))
       .map((markers: Marker[]) => markers.length > 0)
       .take(1) as Observable<boolean>;
 

@@ -17,6 +17,7 @@ describe('MarkerService', () => {
     get() {
       return {
         host: 'host.com',
+        base: '/base',
         resource: '/resource/{0}'
       };
     }
@@ -66,7 +67,7 @@ describe('MarkerService', () => {
         .subscribe((c: MockConnection) => {
 
           expect(c.request.method).toBe(RequestMethod.Get);
-          expect(c.request.url).toContain(`host.com/resource/${mockedCityParam}`);
+          expect(c.request.url).toContain(`host.com/base/resource/${mockedCityParam}`);
           expect(c.request.url).toContain(`type[]=room`);
 
           c.mockRespond(new Response({
