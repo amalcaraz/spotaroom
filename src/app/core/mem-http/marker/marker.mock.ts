@@ -41,7 +41,7 @@ export interface MarkerResponseWithIdAndType extends MarkerResponse {
   type?: 'apartments' | 'residences' | 'rooms' | 'studios';
 }
 
-export const MARKER: any = [
+export const MARKER: MarkerResponseWithIdAndType[] = [
 
   {id: 'madrid', ...MARKER_MADRID},
   {id: 'madrid', type: 'apartments', ...MARKER_MADRID_APARTMENTS},

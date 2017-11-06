@@ -3,22 +3,21 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MemHttpService } from './mem-http.service';
-import { environment } from '../../../environments/environment';
 
 
 @NgModule({
   imports: [
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(MemHttpService, {
-      host: environment.settings.marker.host,
-      apiBase: environment.settings.marker.base.slice(1),
+      // TODO: Problems with AOT when I use environment variables
+      host: 'https://staging.spotahome.com',
+      apiBase: 'api/public/listings/search',
       passThruUnknownUrl: true,
-      delay: 700
-    })
+      delay: 500
+    } as any)
   ],
   exports: [
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule
+    HttpClientModule
   ]
 })
 export class MemHttpModule {

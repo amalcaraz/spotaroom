@@ -3,6 +3,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { State } from './marker.reducer';
 import { CityId } from '../../app.model';
 import { Marker, MarkerRequestOptions } from './marker.model';
+import { DEFAULT_MARKER_FILTER } from './marker.service';
 
 
 // Private selectors
@@ -28,6 +29,6 @@ export const getAllMarkersFiltered = (city: CityId, options: MarkerRequestOption
   return markers
     .filter((marker: Marker) => marker.city === city)
     .filter((marker: Marker) => options
-      ? marker.filter === options.filter
+      ? (options.filter === DEFAULT_MARKER_FILTER || marker.filter === options.filter)
       : true);
 });

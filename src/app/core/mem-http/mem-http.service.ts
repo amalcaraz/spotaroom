@@ -1,23 +1,23 @@
 import { HttpParams } from '@angular/common/http';
 import { getStatusText, InMemoryDbService, RequestInfo, ResponseOptions, STATUS } from 'angular-in-memory-web-api';
 
-import { MARKER, MarkerResponseWithIdAndType } from './marker/marker.mock';
-import { HOMECARD } from './homecard/homecard.mock';
+import { MarkerResponseWithIdAndType } from './marker/marker.mock';
 import { HomeCard, HomeCardResponse } from '../homecard/homecard.model';
 import { MarkerResponse } from '../marker/marker.model';
 
-
 export class MemHttpService implements InMemoryDbService {
 
-  private _homecards_ids: any = HOMECARD;
-  private _markers: any = MARKER;
+  private _homecards_ids: HomeCardResponse;
+  private _markers: MarkerResponseWithIdAndType[];
 
   createDb() {
 
-    return {
-      markers: this._markers,
-      homecards_ids: this._homecards_ids
-    };
+    return this
+      .load()
+      .then(() => ({
+        markers: this._markers,
+        homecards_ids: this._homecards_ids
+      }));
 
   }
 
@@ -38,6 +38,13 @@ export class MemHttpService implements InMemoryDbService {
         return undefined;
 
     }
+
+  }
+
+  private async load() {
+
+    this._homecards_ids = (await System.import(/* webpackChunkName: "HOMECARD" */ './homecard/homecard.mock'))['HOMECARD'];
+    this._markers = (await System.import(/* webpackChunkName: "MARKER" */ './marker/marker.mock'))['MARKER'];
 
   }
 
